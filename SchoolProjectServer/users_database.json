@@ -1,0 +1,22 @@
+{  
+  "users":[  
+     {  
+        "first_name":"Sean",
+        "last_name":"Yasnogorodski",
+        "username":"seanyasno",
+        "password":"sean"
+     },
+     {  
+        "first_name":"admin",
+        "last_name":"admin",
+        "username":"admin",
+        "password":"admin"
+     },
+     {  
+        "first_name":"Sean",
+        "last_name":"Yasnogorodski",
+        "username":"shonmonster",
+        "password":"bsgyns0w"
+     }
+  ]
+}
