@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/comments_profile_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/profile_default" />
+
+        <TextView
+            android:id="@+id/comment_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_background_comment"
+            android:backgroundTint="#f0f1f4"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:text="Sean Yasnogorodski"
+            android:textColor="#000" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!--<Button-->
+            <!--android:id="@+id/comment_likeBtn"-->
+            <!--android:layout_width="55dp"-->
+            <!--android:layout_height="24dp"-->
+            <!--android:layout_marginLeft="50dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="#fff"-->
+            <!--android:text="Like"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textColor="#737272" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/comment_replyBtn"-->
+            <!--android:layout_width="55dp"-->
+            <!--android:layout_height="24dp"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_toEndOf="@+id/comment_likeBtn"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="#fff"-->
+            <!--android:text="Reply"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textColor="#737272" />-->
+    </RelativeLayout>
+</LinearLayout>

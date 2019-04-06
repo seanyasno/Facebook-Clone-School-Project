@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_material_light"
+    android:orientation="vertical"
+    tools:context=".activities.CommentsActivity">
+
+    <ListView
+        android:id="@+id/comments_listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:layout_above="@+id/something"
+        android:dividerHeight="0sp">
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/something"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:background="@drawable/round_background"
+        android:backgroundTint="#ededed"
+        android:layout_margin="5dp"
+        android:paddingVertical="10dp"
+        android:layout_alignParentBottom="true">
+
+
+        <EditText
+            android:id="@+id/comments_commentInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:ems="10"
+            android:focusableInTouchMode="true"
+            android:hint="Write a comment..."
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16dp"
+            android:background="@android:color/transparent"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/comments_addCommentBtn"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:layout_gravity="bottom"
+            android:layout_marginRight="10dp"
+            android:layout_weight="5"
+            android:background="@drawable/send_button"
+            android:text="" />
+    </LinearLayout>
+
+</RelativeLayout>

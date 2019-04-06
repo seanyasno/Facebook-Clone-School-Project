@@ -1,0 +1,115 @@
+{
+  "project_info": {
+    "project_number": "659984985730",
+    "firebase_url": "https://schoolproject-933a8.firebaseio.com",
+    "project_id": "schoolproject-933a8",
+    "storage_bucket": "schoolproject-933a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659984985730:android:127d8c597bb0ec96",
+        "android_client_info": {
+          "package_name": "com.yasno.sean.testproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659984985730-255vf5v2irs4oqb397ar6j74n2u2a2sq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yasno.sean.testproject",
+            "certificate_hash": "9a6dc01e51a9d3c7ea7b40a053b9791832e189be"
+          }
+        },
+        {
+          "client_id": "659984985730-8u5hlqmmk4hgnvsc5qhdct6pi9p0kv5v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yasno.sean.testproject",
+            "certificate_hash": "899a6a404d992ccc138802e90109a4f49284525b"
+          }
+        },
+        {
+          "client_id": "659984985730-4bgnbbgm9vmkjgla1traoh0gmed649lc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEaT8QPuJtjkLYX6hkX8EA8nZ1Qw-mJWI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "659984985730-4bgnbbgm9vmkjgla1traoh0gmed649lc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659984985730:android:6a3b6ff2f56c1ac8",
+        "android_client_info": {
+          "package_name": "com.yasnosean.schoolprojectapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659984985730-1rg5iioo9001a3895s5b979ia4n632m6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yasnosean.schoolprojectapp",
+            "certificate_hash": "241c30e546c12447d9113f9e355819e240c41dd7"
+          }
+        },
+        {
+          "client_id": "659984985730-jrj075jb3prre826eofm6untav75r2rm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yasnosean.schoolprojectapp",
+            "certificate_hash": "899a6a404d992ccc138802e90109a4f49284525b"
+          }
+        },
+        {
+          "client_id": "659984985730-4bgnbbgm9vmkjgla1traoh0gmed649lc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEaT8QPuJtjkLYX6hkX8EA8nZ1Qw-mJWI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "659984985730-4bgnbbgm9vmkjgla1traoh0gmed649lc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

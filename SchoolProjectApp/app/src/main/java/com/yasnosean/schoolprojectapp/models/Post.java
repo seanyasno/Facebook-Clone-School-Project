@@ -1,4 +1,6 @@
-package com.yasnosean.schoolprojectapp;
+package com.yasnosean.schoolprojectapp.models;
+
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 
@@ -6,23 +8,25 @@ public class Post {
 
     private String id;
     private String user;
+    private String username;
     private String body;
+    private String image;
     private int likes = 0;
-    private ArrayList<Post> comments;
+    private JSONArray comments;
     private boolean liked = false;
 
     public Post(String user, String body) {
         this.user = user;
         this.body = body;
         this.id = String.valueOf(System.currentTimeMillis());
-        comments = new ArrayList<>();
+        comments = new JSONArray();
     }
 
     public Post(String id, String user, String body) {
         this.user = user;
         this.body = body;
         this.id = id;
-        comments = new ArrayList<>();
+        comments = new JSONArray();
     }
 
     public Post(String id, String user, String body, int likes) {
@@ -30,16 +34,36 @@ public class Post {
         this.user = user;
         this.body = body;
         this.likes = likes;
-        comments = new ArrayList<>();
+        comments = new JSONArray();
     }
 
-    public Post(String id, String user, String body, int likes, boolean liked) {
+    public Post(String id, String user, String body, String image, int likes, boolean liked) {
         this.id = id;
         this.user = user;
         this.body = body;
+        this.image = image;
         this.likes = likes;
         this.liked = liked;
-        comments = new ArrayList<>();
+        comments = new JSONArray();
+    }
+
+    public Post(String id, String user, String username, String body, String image, int likes, boolean liked, JSONArray comments) {
+        this.id = id;
+        this.user = user;
+        this.username = username;
+        this.body = body;
+        this.image = image;
+        this.likes = likes;
+        this.liked = liked;
+        this.comments = comments;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getUser() {
@@ -58,7 +82,7 @@ public class Post {
         this.likes = likes;
     }
 
-    public ArrayList<Post> getComments() {
+    public JSONArray getComments() {
         return comments;
     }
 
@@ -66,8 +90,12 @@ public class Post {
         this.body = body;
     }
 
-    public void addComment(Post comment) {
-        comments.add(comment);
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public boolean isLiked() {

@@ -1,43 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="#fff"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
-
-    <Button
-        android:id="@+id/main_addPostBtn"
+    <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="37dp"
-        android:layout_marginBottom="5sp"
-        android:layout_marginLeft="10sp"
-        android:layout_marginRight="10sp"
-        android:layout_marginTop="10sp"
-        android:background="@drawable/round_background"
-        android:text="What's on your mind?"
-        android:textAlignment="textStart"
-        android:textAllCaps="false"
-        android:paddingLeft="20dp"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ListView
-            android:layout_marginTop="10sp"
-            android:id="@+id/main_listView"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:dividerHeight="10sp">
+            android:layout_height="wrap_content">
 
-        </ListView>
+            <EditText
+                android:id="@+id/main_toolbar_searchText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:backgroundTint="#8effffff"
+                android:layout_marginRight="50dp"
+                android:paddingLeft="5dp"
+                android:editable="false"
+                android:drawableLeft="@drawable/search_icon"
+                android:hint="  Search:" />
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                app:srcCompat="@drawable/message_icon" />
+        </RelativeLayout>
 
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tabLayout"
+        android:background="#fff"
+        app:tabIndicatorHeight="0dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    </android.support.design.widget.TabLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:alpha="0.25"
+        android:background="@android:color/darker_gray"/>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/pager">
+    </android.support.v4.view.ViewPager>
 
 </LinearLayout>

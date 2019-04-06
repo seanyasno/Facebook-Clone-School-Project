@@ -1,0 +1,67 @@
+{  
+    "posts":[  
+       {  
+          "id":"1537772751919",
+          "user":"admin admin",
+          "body":"This app is sick! But i still have a lot of things to do",
+          "image":"",
+          "likes":5,
+          "users":[  
+             "seanyasno",
+             "shonmonster"
+          ]
+       },
+       {  
+          "id":"1537772954632",
+          "user":"Sean Yasnogorodski",
+          "body":"I'm awesome \ud83d\udc4c",
+          "image":"",
+          "likes":3,
+          "users":[  
+             "admin",
+             "seanyasno",
+             "shonmonster"
+          ]
+       },
+       {  
+          "id":"1537777203774",
+          "user":"Sean Yasnogorodski",
+          "body":"hello",
+          "image":"",
+          "likes":1,
+          "users":[  
+             "seanyasno"
+          ]
+       },
+       {  
+          "id":"1537800996202",
+          "user":"Sean Yasnogorodski",
+          "body":"test post",
+          "image":"",
+          "likes":0,
+          "users":[  
+ 
+          ]
+       },
+       {  
+          "id":"1537801162953",
+          "user":"admin admin",
+          "body":"k",
+          "image":"",
+          "likes":0,
+          "users":[  
+ 
+          ]
+       },
+       {  
+          "id":"1537807683708",
+          "user":"Sean Yasnogorodski",
+          "body":"haha",
+          "image":"",
+          "likes":0,
+          "users":[  
+ 
+          ]
+       }
+    ]
+ }
