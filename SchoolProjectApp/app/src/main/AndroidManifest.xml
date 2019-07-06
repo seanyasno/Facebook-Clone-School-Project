@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.yasnosean.schoolprojectapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,7 +13,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.StartActivity">
             <intent-filter>
@@ -26,8 +28,13 @@
             android:name=".activities.CommentsActivity"
             android:theme="@style/AppTheme.slidrActivityTheme" />
         <activity android:name=".activities.ProfileActivity" />
-        <activity android:name=".activities.SearchActivity"></activity>
+        <activity android:name=".activities.SearchActivity"/>
         <service android:name=".services.PostUploadService"/>
+        <receiver android:name=".services.VibrateReceiver" >
+            <intent-filter >
+                <action android:name="com.yasnosean.schoolprojectapp.android.action.broadcast"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

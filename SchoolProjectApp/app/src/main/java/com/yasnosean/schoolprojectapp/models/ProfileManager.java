@@ -2,7 +2,7 @@ package com.yasnosean.schoolprojectapp.models;
 
 import android.content.Context;
 
-public class    ProfileManager {
+public class ProfileManager {
     private ServerHandler serverHandler;
 
     public ProfileManager(Context context) {

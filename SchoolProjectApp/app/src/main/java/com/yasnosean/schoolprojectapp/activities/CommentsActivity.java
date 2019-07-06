@@ -29,8 +29,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+// An activity that shows all the comments that belong to the chosen post.
 public class CommentsActivity extends AppCompatActivity implements View.OnClickListener{
 
+    // UI
     private ListView listView;
     private ArrayList<Post> comments;
     private CommentAdapter commentAdapter;
@@ -53,6 +55,7 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
         SharedPreferences sp = getSharedPreferences("user_info", 0);
         username = sp.getString("username", "");
 
+        // init
         commentInput = findViewById(R.id.comments_commentInput);
         addCommentBtn = findViewById(R.id.comments_addCommentBtn);
         addCommentBtn.setOnClickListener(this);
@@ -73,6 +76,9 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
         finish();
     }
 
+    /**
+     * A method that loads all the comments of the selected post from the server
+     */
     private void loadComments() {
         this.comments = new ArrayList<>();
         this.profiles = new LinkedList<>();
@@ -80,13 +86,22 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
         Intent intent = getIntent();
         String postId = intent.getStringExtra("post_id");
 
+        // makes a connection to server and takes all the posts and saves it as json format array
         CommentsLoader commentsLoader = new CommentsLoader(this, postId);
         JSONArray comments = commentsLoader.getComments();
 
+        // a check for testing
         if (comments == null) {
             System.out.println("BATMAN SOMETHING COOL");
             return;
         }
+
+        /**
+         * converts each json object in the json array to a comment and adds it to the list
+         *
+         * *** we don't want to call each time to server to get the comment's username so there's
+         * a list that contains different usernames that posted a comment (or a few)
+         */
         try {
             for (int i = 0; i < comments.length(); i++) {
                 String c = comments.getString(i);
@@ -124,6 +139,11 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void onClick(View view) {
+        /**
+         * Adding a comment to server:
+         * in order to do that we convert the comment's data into a json object and afterwards send
+         * the json object as a string to server.
+         */
         if (view == addCommentBtn) {
             SharedPreferences sp = getSharedPreferences("user_info", 0);
             String firstName = sp.getString("first_name", "");
@@ -162,6 +182,7 @@ public class CommentsActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    // handles the connection with the server to load comments
     private class CommentsLoader extends ServerConnector {
 
         public CommentsLoader(Context context, String postId) {

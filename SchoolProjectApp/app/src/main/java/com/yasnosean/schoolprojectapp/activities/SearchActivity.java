@@ -26,11 +26,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+// This class shows the search page for users
 public class SearchActivity extends AppCompatActivity {
 
+    // UI
     private EditText search;
-
     private ListView listView;
+
     private SearchProfileAdapter searchProfileAdapter;
 
     private List<Profile> profiles;
@@ -51,9 +53,11 @@ public class SearchActivity extends AppCompatActivity {
         search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                // if the user clicks the search icon, show result
                 if (id == EditorInfo.IME_ACTION_SEARCH) {
                     String _username = search.getText().toString();
 
+                    // send the user and get all the users with the same name
                     Search search = new Search(SearchActivity.this);
                     JSONArray users = search.sendUsernameAndGetUsers(_username);
 
@@ -63,7 +67,7 @@ public class SearchActivity extends AppCompatActivity {
 
                     profiles = new ArrayList<>();
 
-
+                    // init the array list
                     for (int i = 0; i < users.length(); i++) {
                         JSONObject user;
                         try {
@@ -95,6 +99,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        // going to the selected user's profile
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

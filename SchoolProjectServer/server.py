@@ -312,6 +312,7 @@ async def mainloop(ws, path):
                         ff = open(post['image'], 'rb')
                         post['image'] = base64.encodestring(ff.read()).decode('utf-8')
                         ff.close()
+                    print(post)
                     posts.append(post)
         num_of_posts = str(len(posts))
         print("LENGTH OF POSTS : " + str(num_of_posts))
@@ -592,11 +593,12 @@ async def mainloop(ws, path):
         print ("added " + username + "'s token to database")
 
 
-
-            
-
-start_server = websockets.serve(mainloop, '192.168.1.16', 8080)
-# start_server = websockets.serve(mainloop, '172.19.5.82', 8080)
+'''
+serve() returns an awaitable. 
+Awaiting it yields an instance of WebSocketServer which provides close() 
+and wait_closed() methods for terminating the server and cleaning up its resources.
+'''
+start_server = websockets.serve(mainloop, '172.19.9.19', 8080)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever() 

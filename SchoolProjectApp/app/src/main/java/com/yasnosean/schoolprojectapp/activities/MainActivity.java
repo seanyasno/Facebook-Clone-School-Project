@@ -12,6 +12,12 @@ import com.yasnosean.schoolprojectapp.R;
 import com.yasnosean.schoolprojectapp.adapters.SectionsAdapter;
 import com.yasnosean.schoolprojectapp.models.TestService;
 
+/**
+ * The main page that holds the posts fragment section
+ *
+ * I wanted to make also settings and notifications sections
+ * but I changed my mind at the end.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
@@ -46,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(0).setIcon(R.drawable.posts_page_icon_fill);
-//        tabLayout.getTabAt(1).setIcon(R.drawable.notifications_page_icon_no_fill);
-//        tabLayout.getTabAt(1).setIcon(R.drawable.more_options_page_icon_no_fill);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -56,15 +60,6 @@ public class MainActivity extends AppCompatActivity {
                     case 0:
                         tab.setIcon(R.drawable.posts_page_icon_fill);
                         break;
-//                    case 1:
-//                        tab.setIcon(R.drawable.more_options_page_icon_fill);
-//                        break;
-//                    case 1:
-//                        tab.setIcon(R.drawable.notifications_page_icon_fill);
-//                        break;
-//                    case 2:
-//                        tab.setIcon(R.drawable.more_options_page_icon_fill);
-//                        break;
                 }
             }
 
@@ -77,12 +72,6 @@ public class MainActivity extends AppCompatActivity {
                     case 1:
                         tab.setIcon(R.drawable.more_options_page_icon_no_fill);
                         break;
-//                    case 1:
-//                        tab.setIcon(R.drawable.notifications_page_icon_no_fill);
-//                        break;
-//                    case 2:
-//                        tab.setIcon(R.drawable.more_options_page_icon_no_fill);
-//                        break;
                 }
             }
 

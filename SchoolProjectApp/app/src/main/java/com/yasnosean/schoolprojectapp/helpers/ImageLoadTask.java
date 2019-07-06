@@ -16,6 +16,7 @@ import com.yasnosean.schoolprojectapp.models.ProfileManager;
 import java.util.List;
 
 public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
+
     private Context context;
     private ImageView profileImage;
     private List<Profile> profiles;

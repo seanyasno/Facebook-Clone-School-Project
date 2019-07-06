@@ -27,10 +27,12 @@ import com.yasnosean.schoolprojectapp.models.ServerHandler;
 
 import java.io.IOException;
 
+// an activity that shows the user's profile
 public class ProfileActivity extends AppCompatActivity {
 
     private Profile profile;
 
+    // UI
     private ImageView profileImage;
     private ImageView backgroundImage;
     private TextView fullnameText;
@@ -42,6 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageView addRemoveFriendImage;
     private ImageView sendMessageImage;
 
+    // condition
     private String username;
     private String otherUsername;
 
@@ -58,6 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        // init
         profileImage = findViewById(R.id.profile_profile_image);
         backgroundImage = findViewById(R.id.profile_backgroundImage);
         fullnameText = findViewById(R.id.profile_full_name);
@@ -76,25 +80,27 @@ public class ProfileActivity extends AppCompatActivity {
         String fullName = getIntent().getExtras().getString("fullname");
         otherUsername = getIntent().getExtras().getString("username");
 
-//        profile = new Profile("", "", firstname, lastname, otherUsername);
+        // making a profile variable just to control the profile's data more easily
         profile = new Profile(firstname, lastname, username);
 
         fullnameText.setText(fullName);
 
+        // getting user's profile and background images for the server
         ProfileManager profileManager = new ProfileManager(ProfileActivity.this);
         String profileImageString = profileManager.getProfileImage(otherUsername);
 
         profileManager = new ProfileManager(ProfileActivity.this);
         String backgroundImageString = profileManager.getBackgroundImage(otherUsername);
 
+        // setting the profile image
         if (!TextUtils.isEmpty(profileImageString)) {
             if (!profileImageString.equals("noimage")) {
                 profile.setProfileImage(profileImageString);
                 profileImage.setImageBitmap(Algorithms.stringToBitMap(profileImageString));
-            } else {
-
             }
         }
+
+        // settings the background image
         if (!TextUtils.isEmpty(backgroundImageString)) {
             if (!backgroundImageString.equals("noimage")) {
                 profile.setBackgroundImage(backgroundImageString);
@@ -102,13 +108,16 @@ public class ProfileActivity extends AppCompatActivity {
             }
         }
 
-        // Checking if the profile that the user is looking at is his profile
+        // Checking if the profile that the user is looking at is his own profile
         if (otherUsername.equals(username)) {
             handleProfile();
         } else {
             handleOtherProfile();
         }
 
+        /** This section of code handles of which button to display in the profile page
+         *  depends on the users' condition.
+         */
         addRemoveFriendImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -154,6 +163,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        // confirm friend request button
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -170,6 +180,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        // reject friend request button
         rejectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -251,6 +262,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
+            // changing profile image
             if (requestCode == 420) {
                 Uri uri = data.getData();
                 try {
@@ -264,13 +276,10 @@ public class ProfileActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
-
-
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            } else if (requestCode == 419) {
+            } else if (requestCode == 419) { // changing background image
                 Uri uri = data.getData();
                 try {
                     Bitmap bm = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
@@ -292,6 +301,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         }
     }
+
 
     private class FriendProfileManager {
 

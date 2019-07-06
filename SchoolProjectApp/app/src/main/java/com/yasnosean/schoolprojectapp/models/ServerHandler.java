@@ -28,9 +28,7 @@ public class ServerHandler {
     }
 
     public void start() {
-        Request request = new Request.Builder().url("ws://192.168.1.16:8080").build();
-//        Request request = new Request.Builder().url("ws://77.138.210.48:80").build();
-//        Request request = new Request.Builder().url("ws://172.19.5.82:8080").build();
+        Request request = new Request.Builder().url("ws://172.19.9.19:8080").build();
         ws = client.newWebSocket(request, listener);
     }
 

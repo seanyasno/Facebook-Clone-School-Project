@@ -47,8 +47,6 @@ public class CommentAdapter extends ArrayAdapter<Post> {
 
         holder.profileImage = view.findViewById(R.id.comments_profile_image);
         holder.body = view.findViewById(R.id.comment_text);
-//        Button likeBtn = view.findViewById(R.id.comment_likeBtn);
-//        Button replyBtn = view.findViewById(R.id.comment_replyBtn);
 
         Post temp = comments.get(position);
 

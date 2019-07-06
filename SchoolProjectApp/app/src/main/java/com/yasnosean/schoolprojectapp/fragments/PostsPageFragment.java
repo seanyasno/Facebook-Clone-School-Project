@@ -51,8 +51,13 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * most important page in the app,
+ * shows all the posts in the main screen.
+ */
 public class PostsPageFragment extends Fragment implements View.OnClickListener {
 
+    // UI
     private ImageView postsProfileImage;
     private ListView listView;
     private Button addPostBtn;
@@ -88,6 +93,7 @@ public class PostsPageFragment extends Fragment implements View.OnClickListener 
             public void onLayoutChange(View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
                 if (postAdapter.isLikeChanged()) {
                     postAdapter.setLikeChanged(false);
+                    // post like
                     PostManager postManager = new PostManager(getActivity(), "like");
                     postManager.sendMessage(username);
 
@@ -113,6 +119,7 @@ public class PostsPageFragment extends Fragment implements View.OnClickListener 
                     int likes = postManager.getLikes();
 
                     if (likes != -1) {
+                        postAdapter.notifyDataSetChanged();
                         // finds the index of the post and sets the current likes
                         int index = postAdapter.posts.indexOf(post);
                         System.out.println("MARVEL " + String.valueOf(index));
@@ -122,12 +129,11 @@ public class PostsPageFragment extends Fragment implements View.OnClickListener 
                         System.out.println("MARVEL SIZE" + listView.getChildCount());
                         View v = listView.getChildAt(index);
                         if (v != null) {
-                            Toast.makeText(getContext(), "LIKES: " + likes, Toast.LENGTH_SHORT).show();
                             TextView likesText = v.findViewById(R.id.post_likes);
                             likesText.setText(String.valueOf(likes) + " Likes");
                             postAdapter.notifyDataSetChanged();
                         } else {
-                            System.out.println("MARVEL SOMETHING WENT WRONG");
+                            System.out.println("MARVEL SOMETHING WENT WRONG ");
                         }
                     } else {
                         Toast.makeText(getActivity(), "something went wrong with the like", Toast.LENGTH_SHORT).show();
@@ -165,9 +171,6 @@ public class PostsPageFragment extends Fragment implements View.OnClickListener 
         });
 
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_dark);
-
-
-
 
         return v;
     }
@@ -212,7 +215,7 @@ public class PostsPageFragment extends Fragment implements View.OnClickListener 
 
                     String upload_time = jPost.getString("upload_time");
                     String user = jPost.getString("user");
-                    String username = jPost.getString("username");
+                    String username_ = jPost.getString("username");
                     String body = jPost.getString("body");
                     String image = jPost.getString("image");
                     int likes = jPost.getInt("likes");
@@ -222,18 +225,18 @@ public class PostsPageFragment extends Fragment implements View.OnClickListener 
 
                     boolean usernameInList = false;
                     for (Profile p : profiles) {
-                        if (p.getUsername().equals(username)) {
+                        if (p.getUsername().equals(username_)) {
                             usernameInList = true;
                             break;
                         }
                     }
                     if (!usernameInList) {
-                        Profile profile = new Profile(user.split("")[0], user.split("")[1], username);
+                        Profile profile = new Profile(user.split("")[0], user.split("")[1], username_);
                         profiles.add(profile);
 
-                        if (username.equals(this.username)) {
+                        if (username_.equals(this.username)) {
                             ProfileManager profileManager = new ProfileManager(getContext());
-                            postsProfileImage.setImageBitmap(Algorithms.stringToBitMap(profileManager.getProfileImage(username)));
+                            postsProfileImage.setImageBitmap(Algorithms.stringToBitMap(profileManager.getProfileImage(username_)));
                         }
                     }
 
@@ -246,7 +249,7 @@ public class PostsPageFragment extends Fragment implements View.OnClickListener 
 
 
 
-                    this.posts.add(new Post(upload_time, user, username, body, image, likes, liked, comments));
+                    this.posts.add(new Post(upload_time, user, username_, body, image, likes, liked, comments));
                 }
 
             }
@@ -387,7 +390,6 @@ public class PostsPageFragment extends Fragment implements View.OnClickListener 
             String numOfPosts;
             while ((numOfPosts = serverHandler.getMessage()) == "") {
             }
-            System.out.println("NICEE " + numOfPosts);
 
             String posts = "[[";
             try {
@@ -436,7 +438,7 @@ public class PostsPageFragment extends Fragment implements View.OnClickListener 
             if (s.equals(""))
                 return -1;
 
-            Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
 
             return Integer.valueOf(s);
         }
@@ -494,11 +496,6 @@ public class PostsPageFragment extends Fragment implements View.OnClickListener 
         private ImageView postProfileImage;
         private String username;
 
-//        private List<Post> posts;
-//        private List<Profile> profiles;
-
-//        private PostAdapter postAdapter;
-//        private ListView listView;
         private SwipeRefreshLayout swipeRefreshLayout;
 
         private Bitmap postProfileImageBitmap;
@@ -524,9 +521,12 @@ public class PostsPageFragment extends Fragment implements View.OnClickListener 
                     for (int j = 0; j < subPosts.length(); j++) {
                         JSONObject jPost = subPosts.getJSONObject(j);
 
+//                        Toast.makeText(context, jPost.toString(), Toast.LENGTH_SHORT).show();
+//                        System.out.println("SAYB:: " + jPost.toString());
+
                         String upload_time = jPost.getString("upload_time");
                         String user = jPost.getString("user");
-                        String username = jPost.getString("username");
+                        String username_ = jPost.getString("username");
                         String body = jPost.getString("body");
                         String image = jPost.getString("image");
                         int likes = jPost.getInt("likes");
@@ -536,31 +536,35 @@ public class PostsPageFragment extends Fragment implements View.OnClickListener 
 
                         boolean usernameInList = false;
                         for (Profile p : profiles) {
-                            if (p.getUsername().equals(username)) {
+                            if (p.getUsername().equals(username_)) {
                                 usernameInList = true;
                                 break;
                             }
                         }
                         if (!usernameInList) {
-                            Profile profile = new Profile(user.split("")[0], user.split("")[1], username);
+                            Profile profile = new Profile(user.split("")[0], user.split("")[1], username_);
                             profiles.add(profile);
 
-                            if (username.equals(this.username)) {
+                            if (username_.equals(this.username)) {
                                 ProfileManager profileManager = new ProfileManager(context);
-                                postProfileImageBitmap = Algorithms.stringToBitMap(profileManager.getProfileImage(username));
+                                postProfileImageBitmap = Algorithms.stringToBitMap(profileManager.getProfileImage(username_));
                             }
                         }
 
+                        System.out.println("SAYB:: " + username);
                         for (int k = 0; k < s.length(); k++) {
+                            System.out.println("SAYB:: " + s.getString(k));
                             if (s.getString(k).equals(username)) {
                                 liked = true;
                                 break;
                             }
                         }
 
+                        System.out.println("SAYB:: " + liked);
 
 
-                        posts.add(new Post(upload_time, user, username, body, image, likes, liked, comments));
+
+                        posts.add(new Post(upload_time, user, username_, body, image, likes, liked, comments));
                     }
 
                 }

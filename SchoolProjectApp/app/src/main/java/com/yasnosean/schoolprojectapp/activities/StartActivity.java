@@ -23,10 +23,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-// This activity is the first activity that the user sees when he launches the app.
-// In this activity the user can login and register to the app.
+/** This activity is the first activity that the user sees when he launches the app.
+ In this activity the user can login and register to the app. */
 public class StartActivity extends AppCompatActivity implements View.OnClickListener{
 
+    // UI
     private Button loginBtn;
     private Button registerBtn;
 
@@ -34,6 +35,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        // UI init
         loginBtn = findViewById(R.id.loginBtn);
         registerBtn = findViewById(R.id.registerBtn);
 
@@ -191,6 +193,9 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    /**
+     * This class handles the login connection with the server
+     */
     private class Login extends ServerConnector {
 
         private JSONObject user = null;
@@ -253,6 +258,9 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    /**
+     * This class handles the register connection with the server
+     */
     private class Register extends ServerConnector {
 
         public Register(Context context) {
